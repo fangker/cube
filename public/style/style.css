@@ -1,0 +1,108 @@
+.logo{
+    position: absolute;
+    top: 17px;
+    display: inline-block;
+    border: none;
+    left: 0;
+}
+.logo img{
+    width: 82px;
+    height: 32px;
+}
+img {
+    position: relative;
+    display: inline-block;
+    border: none;
+}
+.header {
+    height: 65px;
+    border-bottom: 6px solid #5FB878;
+    background-color: #fff;
+    color: #fff;
+}
+.nav{
+    top: 0px;
+    border: 90px;
+    position: absolute;
+    right: 0px;
+    background-color:#ffffff;
+ }
+
+.layui-nav-item a {
+    font-size: 22px;
+    font-family: '微软雅黑 Light';
+    color: #000000   !important;
+}
+.layui-nav-item .layui-this:after {
+    background-color: #1E9FFF !important;
+    bottom: -10px;
+}
+
+.page-title {
+    margin-left: 5px;
+    position: relative;
+    font-size: 20px !important;
+    line-height: 41px;
+    margin: 20px 15px 30px;
+    border: 1px solid #1E9FFF;
+    padding-left: 41px;
+    width: 17%;
+    border-bottom-left-radius: 24px;
+    border-top-left-radius: 43px;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 41px;
+    box-shadow: 7px 8px 12px #888888;
+}
+
+.site-block {
+    padding: 20px;
+    border: 1px solid #8bc34a;
+}
+
+.site-text{
+    width: 50%;
+    position: relative;
+    min-width: 500px;
+    margin-left: 13px;
+}
+
+.layui-form-label{
+    font-size: 15px !important;
+}
+
+#hunman-check{
+ width: 50%;
+}
+
+.form-input {
+    width: 50%;
+}
+.form-text{
+    position: absolute;
+    left: 185px;
+    top: 15px;
+    color: red;
+    font-size: 20px;
+    width: 38%;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: inline-block;
+    line-height: 11px;
+}
+
+.side-bar{
+    position: relative;
+    width: 57%;
+    float: left;
+}
+
+.side-content{
+    position: relative;
+    margin-left: 14px;
+    border: 1px solid green;
+    float: left;
+    width: 30%;
+}
+
+
+
