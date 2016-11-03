@@ -17,7 +17,10 @@ const config = {
             ['product','产品']
         ]
 
-    }
+    },
+    check:[['a和c之间的字母','b'],['铁三角是什么','耳机']]
+
+
 }
 
 module.exports = config;

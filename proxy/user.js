@@ -1,9 +1,22 @@
 const User = require('../models').User;
+const crypto = require('crypto');
+
+/**MD5加密
+ * @param{String} content
+ * -result {String} hashmsg
+ */
+
+function encode (content)=>{
+    let hasher=crypto.createHash("md5");
+    hasher.update(content);
+     return hasher.digest('hex');//hashmsg为加密之后的数据
+}
+
 
 
 /**根据用户名查找信息
  * @param {String} loginName 用户名
- *
+ * -data  [Array]  数组结果
 */
 exports.getUserByLoginName = (loginName)=>{
  return User.findOne({loginName: new RegExp(`^${loginName}$`, "i")}).exec();
@@ -18,9 +31,14 @@ exports.getUserByEmail = (email)=> {
 }
 
 /**创建用户
- * 
+ * @param {String} loginName  用户名
+ * @param {String} pass  密码
+ * @param {String} name  昵称
  */
-exports.cereatUser = (loginName,name,pass,email,url) =>{
-    let user = User(name,loginName,pass,email,url);
+exports.cereatUser = (loginName,pass,name) =>{
+    let user = User();
+    user.loginName=loginName;
+    user.pass=encode(pass);
+    user.name=name;
    return user.save();
 }
