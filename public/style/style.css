@@ -9,14 +9,14 @@
     width: 82px;
     height: 32px;
 }
-img {
+.img {
     position: relative;
     display: inline-block;
     border: none;
 }
 .header {
     height: 65px;
-    border-bottom: 6px solid #5FB878;
+    border-bottom: 6px solid #3F51B5;
     background-color: #fff;
     color: #fff;
 }
@@ -129,4 +129,124 @@ img {
     text-indent:2em;
     padding: 16px;
 
+}
+
+@font-face {
+    font-family: 'iconfont';  /* project id："174753" */
+    src: url('http://at.alicdn.com/t/font_p3m5pq89p2cmzpvi.eot');
+    src: url('http://at.alicdn.com/t/font_p3m5pq89p2cmzpvi.eot') format('embedded-opentype'),
+    url('http://at.alicdn.com/t/font_p3m5pq89p2cmzpvi.woff') format('woff'),
+    url('http://at.alicdn.com/t/font_p3m5pq89p2cmzpvi.ttf') format('truetype'),
+    url('http://at.alicdn.com/t/font_p3m5pq89p2cmzpvi.svg#iconfont') format('svg');
+}
+
+
+@media screen and (min-width:1200px){
+    .iconfont{
+        position: absolute;
+        top: 6px;
+        left: 133px;
+        font-family:"iconfont" !important;
+        font-size:23px;
+        font-style:normal;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-stroke-width: 0.2px;
+        -moz-osx-font-smoothing: grayscale;
+        padding-left:20px
+    }
+    .topic-btn{
+        position: absolute;
+        right: 0px;
+        display: inline-block;
+    }
+
+
+    .main {
+        position: relative;
+        width: 1085px;
+        margin: 0 auto 15px;
+        min-height: 600px;
+        top: 14px;
+    }
+
+    .topic-panel{
+        width:80%;
+        min-height: 900px;
+        float: left;
+
+    }
+
+    .warp{
+        float: left;
+        width: 100%;
+        min-height: 300px;
+    }
+
+    .topic-tab {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .topic-tab  span{
+        display: inline-block;
+        vertical-align: top;
+        border: 1px solid #009E94;
+        border-right: none;
+        font-size: 0;
+    }
+
+    .topic-tab  span a{
+        height: 40px;
+        line-height: 42px;
+        padding: 0 20px;
+        border-right: 1px solid #009E94;
+        font-size: 14px;
+        text-decoration: none;
+        Display:inline-block;
+
+    }
+    .form-search{
+        position: relative;
+        margin-left: 27px;
+        display: inline-block;
+    }
+    .topic-list-panel{
+        display: block;
+       position: relative;
+        top:15px;
+        width: 100%;
+    }
+
+    .topic-list-panel  li{
+        position: relative;
+        display: inline-block;
+        height:77px ;
+        border-bottom: 1px solid #E9E9E9;
+        width: 100%;
+    }
+    .topic-list-panel  li img{
+        display: block;
+        height:77px ;
+        border-bottom: 1px solid #E9E9E9;
+        width: 77px;
+    }
+
+    .topic-list-panel  li a {
+        display: inline-block;
+        height:77px ;
+        border-bottom: 1px solid #E9E9E9;
+        width: 77px;
+    }
+    .topic-list-panel  li h2 {
+        display: inline-block;
+        height: 20px;
+        position: absolute;
+        top:2px;
+        font-family: Gabriola;
+        max-width: 86%;
+        padding-left: 15px;
+        overflow:hidden;
+        font: 14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;
+
+    }
 }
