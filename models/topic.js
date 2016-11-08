@@ -18,6 +18,7 @@ let topicSchema = new Schema({
     last_reply: { type: ObjectId ,ref :'User'},
     last_reply_at: { type: Date, default: Date.now },
     tab: {type: String},
+    imge:{type:String,default: Date.now},  //缩略图
     deleted: {type: Boolean, default: false}
 
 });

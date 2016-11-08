@@ -1,5 +1,44 @@
-extends layout
+extends header
 
-block content
-  h1= title
-  p Welcome to #{title}
+block main
+    .main.layui-clear
+        .warp
+            .page-main
+                .page-title
+                    h2 发表话题
+                .layui-form-pane
+                    form(action='/topic/add', method='POST""')
+                        .layui-form-item
+                            label.layui-form-label 标题
+                            .layui-input-block
+                                input.layui-input(type='text', name='title', autocomplete='off', placeholder='请输入标题')
+                        .layui-form-item
+                            .layui-form
+                                .layui-inline
+                                    label.layui-form-label 发1表类型
+                                    .layui-input-block
+                                        select(name='tab', lay-verify='required')
+                                            option(value='') 请选择一个城市
+                                            option(value='010') 北京
+                                            option(value='021') 上海
+                                            option(value='share', selected='true') 杭州
+                                .layui-inline
+                                    label.layui-form-label 发1表类型
+                                    .layui-input-block
+                                        select(name='zz', lay-verify='required')
+                                            option(value='') 请选择一个城市
+                                            option(value='010') 北京
+                                            option(value='021') 上海
+                                            option(value='0571', selected='') 杭州
+                        textarea#content(style='display: none;height: 560px;')
+                        .form-bottom-fill
+                        .layui-form-item
+                            button.layui-btn(type='submit') 立即发布
+    script(type='text/javascript', src='./js/layui.js')
+    script(type='text/javascript', src='./js/lay/modules/index.js')
+    script.
+        layui.config({
+            base: 'js/lay/modules/' //你的模块目录
+        }).use('index'); //加载入口
+        var editor = new wangEditor('content');
+        editor.create();

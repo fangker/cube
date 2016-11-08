@@ -1,3 +1,6 @@
+.body{
+    font: 14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;
+}
 .logo{
     position: absolute;
     top: 17px;
@@ -163,17 +166,18 @@
 
     .main {
         position: relative;
-        width: 1085px;
+        width: 1156px;
         margin: 0 auto 15px;
         min-height: 600px;
         top: 14px;
+        padding-left: 0px;
     }
 
     .topic-panel{
-        width:80%;
+        width:820px;
         min-height: 900px;
         float: left;
-
+        margin-right: 309px;
     }
 
     .warp{
@@ -219,34 +223,108 @@
 
     .topic-list-panel  li{
         position: relative;
-        display: inline-block;
-        height:77px ;
+        height: 59px;
+        margin-top: 8px;
+        padding: 0 0 8px 60px;
         border-bottom: 1px solid #E9E9E9;
-        width: 100%;
     }
-    .topic-list-panel  li img{
-        display: block;
-        height:77px ;
-        border-bottom: 1px solid #E9E9E9;
-        width: 77px;
-    }
-
-    .topic-list-panel  li a {
-        display: inline-block;
-        height:77px ;
-        border-bottom: 1px solid #E9E9E9;
-        width: 77px;
-    }
-    .topic-list-panel  li h2 {
-        display: inline-block;
-        height: 20px;
+    .list-avatar {
         position: absolute;
-        top:2px;
-        font-family: Gabriola;
+        left: 0;
+        top: 0;
+    }
+    .list-tip  h2 a {
         max-width: 86%;
-        padding-left: 15px;
-        overflow:hidden;
-        font: 14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;
+        margin-right: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 16px;
+    }
+    .list-tip  {
+      margin-left: 20px;
+      position: relative;
+    }
+
+
+    .list-tip a {
+        max-width: 86%;
+        margin-right: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 20px;
+    }
+
+
+    .list-avatar img {
+        width: 59px;
+        height: 59px;
+        border-radius: 100%;
+    }
+
+    .topic-list-depict{
+     position: relative;
+     margin-left: 20px;
+     margin-top: 14px;
+    }
+
+    .topic-list-depict a{
+        position: relative;
+        margin-top: 14px;
+        color:#8bc34a ;
+    }
+
+    .topic-list-depict span{
+        position: relative;
+        margin-top: 14px;
+        color:#879873 ;
+        margin-left: 20px;
+    }
+    .edge{
+        position: relative;
+        float: left;
+        top: 0;
+        width: 311px;
+        margin-left: -285px;
+    }
+    .edge h3{
+        width: auto;
+        margin: 0;
+        line-height: 38px;
+        padding: 0 15px;
+        border: none;
+        background-color: #ededeb;
+    }
+    .page-title{
+        margin: 3px 0 35px;
+        line-height: 48px;
+        border-bottom: 2px solid #E9E9E9;
 
     }
+    .page-title h2{
+        font-size: 22px;
+        font-family: monospace;
+        margin-bottom: -2px;
+    }
+    .page-main{
+       padding: 0 102px;
+    }
+
+    .form-bottom-fill{
+        border: 1px solid #e2e2e2;
+        border-radius: 2px 0 0 2px;
+        text-align: center;
+        background-color: #FBFBFB;
+        height: 20px;
+        margin-bottom: 20px;
+    }
+    .layui-layedit-tool{
+        width: auto;
+        background: #FBFBFB;
+        height: 37px;
+        border-radius: 2px;
+    }
+
+
 }

@@ -1,0 +1,52 @@
+include header
+block content
+    .main.layui-clear
+        .warp
+            .page-main
+                .page-title
+                    h2 发表话题
+                .layui-form-pane
+                    form(action='/post', method='POST')
+                        .layui-form-item
+                            label.layui-form-label 标题
+                            .layui-input-block
+                                input.layui-input(type='text', name='tistle', autocomplete='off', placeholder='请输入标题')
+                        .layui-form-item
+                            .layui-form
+                                .layui-inline
+                                    label.layui-form-label 发1表类型
+                                    .layui-input-block
+                                        select(name='city', lay-verify='required')
+                                            option(value='') 请选择一个城市
+                                            option(value='010') 北京
+                                            option(value='021') 上海
+                                            option(value='0571', selected='') 杭州
+                                .layui-inline
+                                    label.layui-form-label 发1表类型
+                                    .layui-input-block
+                                        select(name='city', lay-verify='required')
+                                            option(value='') 请选择一个城市
+                                            option(value='010') 北京
+                                            option(value='021') 上海
+                                            option(value='0571', selected='') 杭州
+                        textarea#content(style='display: none;')
+                            | 把编辑器的初始内容放在这textarea即可
+                        .form-bottom-fill
+                        .layui-form-item
+                            button.layui-btn(lay-filter='*', type='submit') 立即发布
+    script(type='text/javascript', src='./js/layui.js')
+    script(type='text/javascript', src='./js/lay/modules/index.js')
+    script.
+        layui.config({
+            base: 'js/lay/modules/' //你的模块目录
+        }).use('index'); //加载入口
+        layui.use('layedit', function () {
+            var layedit = layui.layedit;
+            layedit.build('content', {
+                height: 450 //设置编辑器高度
+            }); //建立编辑器
+            layedit.build('LAY_demo2', {
+                tool: ['face', 'link', 'unlink', '|', 'left', 'center', 'right']
+                , height: 100
+            })
+        });

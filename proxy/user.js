@@ -6,7 +6,7 @@ const crypto = require('crypto');
  * -result {String} hashmsg
  */
 
-function encode (content)=>{
+function encode (content){
     let hasher=crypto.createHash("md5");
     hasher.update(content);
      return hasher.digest('hex');//hashmsg为加密之后的数据

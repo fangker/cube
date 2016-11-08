@@ -2,12 +2,10 @@ const user = require('../proxy/user');
 const topic1=require('../models/index').Topic;
 
 exports.signup = async(ctx,next)=>{
-    let a =await user.getUserByLoginName('aaa');
-    console.log(a,11111111);
     ctx.session.view = "indexss";
     ctx.session.man = "indexss";
     ctx.state = {
-        title: 'koa2 title'
+        title: 'koa2 titl'
     };
 
     await ctx.render('index');

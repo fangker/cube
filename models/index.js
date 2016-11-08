@@ -15,6 +15,6 @@ exports.User = mongoose.model('User');
 exports.Topic = mongoose.model('Topic');
 exports.Product = mongoose.model('Product');
 exports.Series = mongoose.model('Series');
-exports.Series = mongoose.model('Reply');
-exports.Series = mongoose.model('Message');
+exports.Reply = mongoose.model('Reply');
+//exports.Message = mongoose.model('Message');
 
