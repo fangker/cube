@@ -5,13 +5,13 @@ const Topic = require('../models').Topic;
 * @{String} content
 * @{ObjectId} author_id
  */
-exports.createTopic=(loginName,title,content,image,tab)=>{
-    let topic=new Topic();
-    topic.loginName=loginName;
-    topic.title=title;
-    topic.content=content;
-    topic.tab=tab;
-    topic.image=image;
+exports.createTopic = (loginName,title,content,image,tab)=>{
+    let topic = new Topic();
+    topic.loginName = loginName;
+    topic.title = title;
+    topic.content = content;
+    topic.tab = tab;
+    topic.image = image;
     return topic.save();
 }
 

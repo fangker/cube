@@ -1,4 +1,4 @@
-layui.define(['layedit'], function(exports){
-    var layedit = layui.layedit
+layui.define(['form'], function(exports){
+
     exports('index', {});
 });

@@ -86,8 +86,22 @@
     layui.config({
         base: 'js/lay/modules/' //你的模块目录
     }).use('index'); //加载入口
-
     var editor = new wangEditor('content');
+    editor.config.mapAk = 'ZwDq5sGhrTKGjLVPkoWrRiut0PjrqgqR';
+    editor.config.uploadImgUrl = '/uploads';
+    // 配置自定义参数（举例）
+    editor.config.uploadParams = {
+        token: 'abcdefg',
+        user: 'wangfupeng1988'
+    };
+    // 设置 headers（举例）
+    editor.config.uploadHeaders = {
+        'Accept' : 'text/x-json'
+    };
+    // 隐藏掉插入网络图片功能。该配置，只有在你正确配置了图片上传功能之后才可用。
+    editor.config.hideLinkImg = false;
+    editor.config.printLog = false;
+    editor.config.uploadImgFileName = 'file'
     editor.create();
 </script>
 </body>
