@@ -9,7 +9,7 @@ const crypto = require('crypto');
 function encode (content){
     let hasher=crypto.createHash("md5");
     hasher.update(content);
-     return hasher.digest('hex');//hashmsg为加密之后的数据
+    return hasher.digest('hex');//hashmsg为加密之后的数据
 }
 
 
@@ -34,11 +34,20 @@ exports.getUserByEmail = (email)=> {
  * @param {String} loginName  用户名
  * @param {String} pass  密码
  * @param {String} name  昵称
+ * @param {String} email Email
+ * @
  */
-exports.cereatUser = (loginName,pass,name) =>{
+exports.cereatUser = (loginName,pass,name,email) =>{
     let user = User();
     user.loginName=loginName;
     user.pass=encode(pass);
     user.name=name;
+    user.email=email;
    return user.save();
+}
+/**通过ID查找用户
+ * @param {String} loginName  用户名
+ */
+exports.getUserbyLoginName = (loginName) =>{
+    return User.findOne({loginName:loginName}).exec();
 }

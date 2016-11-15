@@ -1,5 +1,6 @@
 const user = require('../proxy/user');
-const topic1=require('../models/index').Topic;
+const topic = require('../proxy/topic');
+
 
 exports.signup = async(ctx,next)=>{
     ctx.session.view = "indexss";
@@ -14,8 +15,22 @@ exports.signup = async(ctx,next)=>{
 
 exports.demo = async(ctx,next)=>{
 
-   let a= await topic1.findOne({}).exec();
-    console.log(a);
+   await  ctx.render('topic');
 
 
 };
+
+exports.showSignup = async(ctx,next)=>{
+    await  ctx.render('signup',{});
+}
+
+exports.signup = async(ctx,next)=>{
+    console.log(ctx.request.body);
+    let {loginname,email,password,username,check} = ctx.request.body;
+    //check验证
+    let state = await user.cereatUser(loginname,password,username,email);
+    console.log(state);
+    ctx.session.user=loginname;
+    await ctx.render('signup',{});
+}
+

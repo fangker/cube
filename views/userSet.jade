@@ -1,0 +1,55 @@
+extends header
+
+block main
+    .main.layui-clear
+        .warp
+            .page-main
+                .page-title
+                    h2 发表话题
+                   .layui-tab.layui-tab-brief
+                       ul.layui-tab-title
+                           li.layui-this 我的信息
+                           li 用户管理
+                           li 权限分配
+
+                       .layui-tab-content
+                           .layui-tab-item.layui-show
+                               .user-tab
+                                 .layui-form-pane
+                                     .layui-form-item
+                                         label.layui-form-label 邮箱
+                                         .layui-input-inline
+                                             input.layui-input(type='text', name='email', autocomplete='off' , value=email)
+                                     .layui-form-item
+                                        label.layui-form-label 昵称
+                                        .layui-input-inline
+                                            input.layui-input(type='text', name='name', autocomplete='off', value=name)
+                                     .layui-form-item
+                                         label.layui-form-label 城市
+                                         .layui-input-inline
+                                             input.layui-input(type='text', name='city', autocomplete='off' , value=city)
+                                     .layui-form-item.layui-form-text
+                                        .layui-form-item
+                                        .user-depict
+                                           p 个人简介
+                                         .layui-input-block
+                                         textarea.layui-textarea(placeholder='随便写些什么刷下存在感', name='sign', autocomplete='off', style='height: 80px;')
+                                     .layui-form-item
+                                         button.layui-btn(type='submit') 立即提交
+
+
+                           .layui-tab-item 2
+                           .layui-tab-item 3
+                           .layui-tab-item 4
+    script(type='text/javascript', src='/js/layui.js')
+    script.
+        layui.config({
+            base: '/js/lay/modules/' //你的模块目录
+        }).use('index'); //加载入口
+        layui.use(['element'], function () {
+            var element = layui.element();
+            //一些事件监听
+            element.on('tab(demo)', function (data) {
+                console.log(data);
+            });
+        });

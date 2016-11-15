@@ -7,12 +7,15 @@ let userSchema = new Schema({
   loginName: { type: String},
   pass: { type: String },
   email: { type: String},
+  city: {type: String},
   url: { type: String },
   score: {type: Number ,default: 0},
-  update_at: { type: Date, default: Date.now },
+  depict: {type:String},
+  avatar: {type: Number},
+  update_at: { type: Date, default: Date.now }
 });
 
-userSchema.index({loginname: 1}, {unique: true});
+userSchema.index({loginName: 1}, {unique: true});
 userSchema.index({email: 1}, {unique: true});
 userSchema.index({score: -1});
 

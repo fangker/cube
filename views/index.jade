@@ -34,10 +34,10 @@ block main
                         .form-bottom-fill
                         .layui-form-item
                             button.layui-btn(type='submit') 立即发布
-    script(type='text/javascript', src='./js/layui.js')
+    script(type='text/javascript', src='/js/layui.js')
     script.
         layui.config({
-            base: 'js/lay/modules/' //你的模块目录
+            base: '/js/lay/modules/' //你的模块目录
         }).use('index'); //加载入口
         var editor = new wangEditor('content');
         editor.config.mapAk = 'ZwDq5sGhrTKGjLVPkoWrRiut0PjrqgqR';

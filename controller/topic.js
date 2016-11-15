@@ -1,8 +1,19 @@
 const topic = require('../proxy/topic');
+const user = require('../proxy/user');
 
 exports.add = async(ctx,next)=>{
-    console.log(ctx.request.body);
+    console.log(ctx.session.user);
     let {title,content,tab} = ctx.request.body;
-    let c=await topic.createTopic('禽兽一只',title,content,tab,'1');
-     console.log(c);
+     auser = await user.getUserbyLoginName(ctx.session.user);
+     atopic = await topic.createTopic(auser._id,title,content,'',tab);
+     atopic._id
 };
+
+exports.getWritePage = async(ctx,next) =>{
+    await ctx.render('addTopic',{});
+
+}
+
+exports.getTopicList = async(ctx,next) => {
+    await  ctx.render('signup',{})
+}

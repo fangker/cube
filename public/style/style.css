@@ -36,6 +36,11 @@
     font-family: '微软雅黑 Light';
     color: #000000   !important;
 }
+.layui-nav-item a:hover{
+    font-size: 22px;
+    font-family: '微软雅黑 Light';
+    color: #1E9FFF   !important;
+}
 .layui-nav-item .layui-this:after {
     background-color: #1E9FFF !important;
     bottom: -10px;
@@ -101,6 +106,7 @@
 }
 
 .side-tips{
+    min-width: 400px;
     top: 25px;
     min-height: 485px;
     position: relative;
@@ -144,25 +150,25 @@
 }
 
 
-@media screen and (min-width:1200px){
-    .iconfont{
+@media screen and (min-width:1200px) {
+    .iconfont {
         position: absolute;
         top: 6px;
         left: 133px;
-        font-family:"iconfont" !important;
-        font-size:23px;
-        font-style:normal;
+        font-family: "iconfont" !important;
+        font-size: 23px;
+        font-style: normal;
         -webkit-font-smoothing: antialiased;
         -webkit-text-stroke-width: 0.2px;
         -moz-osx-font-smoothing: grayscale;
-        padding-left:20px
+        padding-left: 20px
     }
-    .topic-btn{
+
+    .topic-btn {
         position: absolute;
         right: 0px;
         display: inline-block;
     }
-
 
     .main {
         position: relative;
@@ -173,14 +179,14 @@
         padding-left: 0px;
     }
 
-    .topic-panel{
-        width:820px;
+    .topic-panel {
+        width: 820px;
         min-height: 900px;
         float: left;
         margin-right: 309px;
     }
 
-    .warp{
+    .warp {
         float: left;
         width: 100%;
         min-height: 300px;
@@ -191,7 +197,7 @@
         margin-bottom: 20px;
     }
 
-    .topic-tab  span{
+    .topic-tab span {
         display: inline-block;
         vertical-align: top;
         border: 1px solid #009E94;
@@ -199,41 +205,45 @@
         font-size: 0;
     }
 
-    .topic-tab  span a{
+    .topic-tab span a {
         height: 40px;
         line-height: 42px;
         padding: 0 20px;
         border-right: 1px solid #009E94;
         font-size: 14px;
         text-decoration: none;
-        Display:inline-block;
+        Display: inline-block;
 
     }
-    .form-search{
+
+    .form-search {
         position: relative;
         margin-left: 27px;
         display: inline-block;
     }
-    .topic-list-panel{
+
+    .topic-list-panel {
         display: block;
-       position: relative;
-        top:15px;
+        position: relative;
+        top: 15px;
         width: 100%;
     }
 
-    .topic-list-panel  li{
+    .topic-list-panel li {
         position: relative;
         height: 59px;
         margin-top: 8px;
         padding: 0 0 8px 60px;
         border-bottom: 1px solid #E9E9E9;
     }
+
     .list-avatar {
         position: absolute;
         left: 0;
         top: 0;
     }
-    .list-tip  h2 a {
+
+    .list-tip h2 a {
         max-width: 86%;
         margin-right: 100px;
         overflow: hidden;
@@ -241,11 +251,11 @@
         white-space: nowrap;
         font-size: 16px;
     }
-    .list-tip  {
-      margin-left: 20px;
-      position: relative;
-    }
 
+    .list-tip {
+        margin-left: 20px;
+        position: relative;
+    }
 
     .list-tip a {
         max-width: 86%;
@@ -256,39 +266,40 @@
         font-size: 20px;
     }
 
-
     .list-avatar img {
         width: 59px;
         height: 59px;
         border-radius: 100%;
     }
 
-    .topic-list-depict{
-     position: relative;
-     margin-left: 20px;
-     margin-top: 14px;
+    .topic-list-depict {
+        position: relative;
+        margin-left: 20px;
+        margin-top: 14px;
     }
 
-    .topic-list-depict a{
+    .topic-list-depict a {
         position: relative;
         margin-top: 14px;
-        color:#8bc34a ;
+        color: #8bc34a;
     }
 
-    .topic-list-depict span{
+    .topic-list-depict span {
         position: relative;
         margin-top: 14px;
-        color:#879873 ;
+        color: #879873;
         margin-left: 20px;
     }
-    .edge{
+
+    .edge {
         position: relative;
         float: left;
         top: 0;
         width: 311px;
         margin-left: -285px;
     }
-    .edge h3{
+
+    .edge h3 {
         width: auto;
         margin: 0;
         line-height: 38px;
@@ -296,22 +307,25 @@
         border: none;
         background-color: #ededeb;
     }
-    .page-title{
+
+    .page-title {
         margin: 3px 0 35px;
         line-height: 48px;
         border-bottom: 2px solid #E9E9E9;
 
     }
-    .page-title h2{
+
+    .page-title h2 {
         font-size: 22px;
         font-family: monospace;
         margin-bottom: -2px;
     }
-    .page-main{
-       padding: 0 102px;
+
+    .page-main {
+        padding: 0 102px;
     }
 
-    .form-bottom-fill{
+    .form-bottom-fill {
         border: 1px solid #e2e2e2;
         border-radius: 2px 0 0 2px;
         text-align: center;
@@ -319,12 +333,63 @@
         height: 20px;
         margin-bottom: 20px;
     }
-    .layui-layedit-tool{
+
+    .layui-layedit-tool {
         width: auto;
         background: #FBFBFB;
         height: 37px;
         border-radius: 2px;
     }
 
+    .user-tab {
+        padding-top: 23px;
 
+    }
+
+    .user-depict {
+        width: 100% !important;
+        display: inline-block;
+        background-color: #fbfbfb;
+        height: 28px;
+        border-radius: 1px;
+    }
+
+    .user-depict p {
+        margin: 4px;
+    }
+    .conten-detail{
+        margin-right: 357px;
+    }
+    .conten-detail h1{
+        font-size: 24px;
+        line-height: 30px;
+        padding: 5px 0
+    }
+    .topic-tip{
+        width: 595px;
+        display: block;
+        height: 37px;
+        background-color: #77d04b;
+        margin-bottom: 20px;
+    }
+    .topic-about{
+        width: 595px;
+        height: 157px;
+        background-color: #E9E9E9;
+        opacity: 0.8;
+    }
+    .topic-author-avatar img {
+        width: 82px;
+        position: relative;
+        display: inline-block;
+        border: none;
+        height: 80px;
+    }
+    .topic-author-avatar  {
+        width: 82px;
+        position: relative;
+        display: inline-block;
+        border: none;
+        height: 80px;
+    }
 }
