@@ -1,6 +1,7 @@
 .body{
     font: 14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;
 }
+
 .logo{
     position: absolute;
     top: 17px;
@@ -141,18 +142,16 @@
 }
 
 @font-face {
-    font-family: 'iconfont';  /* project id："174753" */
-    src: url('http://at.alicdn.com/t/font_p3m5pq89p2cmzpvi.eot');
-    src: url('http://at.alicdn.com/t/font_p3m5pq89p2cmzpvi.eot') format('embedded-opentype'),
-    url('http://at.alicdn.com/t/font_p3m5pq89p2cmzpvi.woff') format('woff'),
-    url('http://at.alicdn.com/t/font_p3m5pq89p2cmzpvi.ttf') format('truetype'),
-    url('http://at.alicdn.com/t/font_p3m5pq89p2cmzpvi.svg#iconfont') format('svg');
+    font-family: 'iconfont';  /* project id："185094" */
+    src: url('//at.alicdn.com/t/font_5rtqe76c00h33di.eot');
+    src: url('//at.alicdn.com/t/font_5rtqe76c00h33di.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_5rtqe76c00h33di.woff') format('woff'),
+    url('//at.alicdn.com/t/font_5rtqe76c00h33di.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_5rtqe76c00h33di.svg#iconfont') format('svg');
 }
-
 
 @media screen and (min-width:1200px) {
     .iconfont {
-        position: absolute;
         top: 6px;
         left: 133px;
         font-family: "iconfont" !important;
@@ -221,8 +220,12 @@
         margin-left: 27px;
         display: inline-block;
     }
+    .form-search i{
+        position: absolute;
+    }
 
     .topic-list-panel {
+        min-height: inherit;
         display: block;
         position: relative;
         top: 15px;
@@ -231,7 +234,7 @@
 
     .topic-list-panel li {
         position: relative;
-        height: 59px;
+        height: 41px;
         margin-top: 8px;
         padding: 0 0 8px 60px;
         border-bottom: 1px solid #E9E9E9;
@@ -244,19 +247,24 @@
     }
 
     .list-tip h2 a {
+        width: 86%;
+        display: inline-block;
         max-width: 86%;
         margin-right: 100px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        font-size: 16px;
+        font-size: 20px;
     }
 
     .list-tip {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
         margin-left: 20px;
+        width: 80%;
         position: relative;
     }
-
     .list-tip a {
         max-width: 86%;
         margin-right: 100px;
@@ -267,18 +275,19 @@
     }
 
     .list-avatar img {
-        width: 59px;
-        height: 59px;
+        width: 48px;
+        height: 48px;
         border-radius: 100%;
     }
 
     .topic-list-depict {
         position: relative;
         margin-left: 20px;
-        margin-top: 14px;
+        margin-top: 4px;
     }
 
     .topic-list-depict a {
+        font-size: 16px;
         position: relative;
         margin-top: 14px;
         color: #8bc34a;
@@ -287,7 +296,6 @@
     .topic-list-depict span {
         position: relative;
         margin-top: 14px;
-        color: #879873;
         margin-left: 20px;
     }
 
@@ -322,7 +330,7 @@
     }
 
     .page-main {
-        padding: 0 102px;
+        padding: 0 12px;
     }
 
     .form-bottom-fill {
@@ -358,7 +366,10 @@
         margin: 4px;
     }
     .conten-detail{
-        margin-right: 357px;
+        min-height: 900px;
+        width: 74%;
+        margin-right: 272px;
+        float: left;
     }
     .conten-detail h1{
         font-size: 24px;
@@ -366,15 +377,15 @@
         padding: 5px 0
     }
     .topic-tip{
-        width: 595px;
+        width: 95%;
         display: block;
         height: 37px;
         background-color: #77d04b;
         margin-bottom: 20px;
     }
     .topic-about{
-        width: 595px;
-        height: 157px;
+        width: 95%;
+        height: 81px;
         background-color: #E9E9E9;
         opacity: 0.8;
     }
@@ -392,4 +403,172 @@
         border: none;
         height: 80px;
     }
+    .topic-about-view{
+        margin-left: 20px;
+        width: 82px;
+        height: 80px;
+        position: relative;
+        display: inline;
+        top: -19px;
+        font-size: 20px;
+    }
+    .topic-about-view cite{
+        font-style:normal;
+    }
+    .user-vip{
+        color: #FF7200;
+        margin-left: 20px;
+        font-weight: 700;
+        font-style: italic;
+    }
+    .user-name{
+        color: #375395;
+    }
+    .topic-create{
+        margin-left: 20px;
+        color: #4E5465;
+    }
+    .topic-about-view em{
+        font-style: normal;
+        display: block;
+        margin-left: 105px;
+        margin-top: -19px;
+    }
+    .topic-content{
+        max-height: 595px;
+        width: 100%;
+        margin: 6px 3px;
+        font: 19px/1.5 tahoma, arial, 宋体 !important;
+        font-style: normal;
+        padding-top: 20px;
+    }
+    .topic-common-list{
+        margin-top: 20px;
+        max-height: 595px;
+        width: 95%;
+    }
+    .topic-common{
+        margin-bottom: 25px;
+        min-height: 99px;
+        width: 100%;
+        border-bottom: 1px dotted #DFDFDF;
+    }
+    .topic-common-avatar img{
+        float: left;
+        width: 52px;
+        position: relative;
+        display: inline-block;
+        border: none;
+        height: 52px;
+    }
+    .author-content{
+        position: relative;
+        display: inline;
+        width: 100px;
+    }
+    .user-info{
+        line-height: 16px;
+        font-family: "Sitka Heading";
+        display: inline-block;
+        font-size: 24px;
+        width: 85%;
+        margin-left: 15px;
+        position: relative;
+        margin-top: 0px;
+    }
+    .user-info a{
+        font-family: "Sitka Heading";
+        display: inline;
+        font-size: 25px;
+    }
+    .reply-time{
+        color: #ccacac;
+        font-style: oblique;
+        font-size: 15px;
+        margin-left: 20px;
+        display: inline;
+    }
+    .user-medal{
+        align-content: center;
+        display: block;
+        margin-top: 11px;
+    }
+    .reply-content{
+        margin-top: 9px;
+        font: 19px/1.5 tahoma, arial, 宋体;
+    }
+    .topic-content{
+        min-height: 428px;
+    }
+    .topic-content p{
+        font: 19px/1.5  宋体 !important;
+    }
+    .cite{
+        display: inline-block;
+        font-style: normal;
+    }
+    .common-header{
+        background-color: #bababa;
+        width: 95%;
+        height: 40px;
+        border-radius: 7px;
+    }
+    .common-header p{
+        font: 19px/1.5 宋体;
+        padding-left: 20px;
+        padding-top: 7px;
+        margin: 0 auto;
+    }
+    .reply-ups{
+        cursor:Pointer;
+        margin-left: 45%;
+        display: inline;
+    }
+    .reply-ups em{
+        margin-left: 2px;
+    }
+    .reply-at{
+        display: inline;
+        margin-left: 10%;
+    }
+    .reply_up_active{
+        color: #d11c1c;
+    }
+    .reply-editor{
+        margin-top: 9px;
+        margin-bottom: 13px;
+    }
+    .page{
+        display: inline-block;
+        vertical-align: middle;
+        padding: 4px 19px;
+        border: 1px solid #e2e2e2;
+        height: 37px;
+        line-height: 34px;
+        margin: 0 0px -1px 0;
+        color: #333;
+        font-size: 12px;
+    }
+    .topic-list-name{
+        margin-left: 0px!important;
+    }
+
+    .topic-list-tab{
+        background: #ffffff;
+        font-size: 16px;
+        border: 0px solid #100d0d;
+        box-shadow: 2px -1px 7px 2px #9f9f9f;
+        top: 0;
+        cursor: pointer;
+    }
+    .topuc-list-date{
+        color:#2D93CA;
+    }
+    [v-cloak]{
+        display: none;
+    }
+    .topic-update{
+
+    }
+
 }

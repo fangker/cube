@@ -20,7 +20,6 @@ let topicSchema = new Schema({
     tab: {type: String},
     imge:{type:String,default: Date.now},  //缩略图
     deleted: {type: Boolean, default: false}
-
 });
 
 

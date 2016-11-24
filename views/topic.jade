@@ -3,10 +3,150 @@ extends header
 block main
     .main.layui-clear
         .warp
-            .page-main
                 .conten-detail
-                    h1 么么哒
-                    .topic-tip
-                    .topic-about
-                        a.topic-author-avatar(href='/u/336')
-                            img(src='http://res.layui.com/images/fly/avatar/00.jpg', alt='纸飞机')
+                        h1 {{vtopic.title}}
+                        .topic-tip
+                        .topic-about
+                            div(v-cloak)
+                                a.topic-author-avatar(href='/u/336')
+                                    img(src='http://res.layui.com/images/fly/avatar/00.jpg', alt='纸飞机')
+                                span.topic-about-view  {{vauthor.name}}
+                                    cite.cite
+                                        span
+                                         a.user-name(href='/u/336')
+                                        span.user-vip {{vauthor.score}}
+                                        span.topic-create 发布于: {{getLocalDate(vtopic.create_at)}}
+                                        span.topic-update 最后一次更新: {{getCurrentDate(vtopic.update_at)}}
+                                    em  暗暗
+                        .topic-content
+                            p 共X人发表了评论哈哈哈
+
+                        .common-header
+                            p 共X人发表了评论
+                        .topic-common-list
+                                .topic-common
+                                    .author-content
+                                       a.topic-common-avatar(href='/u/336')
+                                         img(src='http://res.layui.com/images/fly/avatar/00.jpg', alt='纸飞机')
+                                    span.user-info
+                                       a.user-name(v-bind:href="'/user/'+vtopic.author_id") aaaa
+                                       span.reply-time 1楼·6天前
+                                       span(class="reply-ups" v-bind:class="{ reply_up_active: active}")
+                                            i(v-on:click="greet").iconfont &#xe62a;
+                                            em 1
+                                       span.reply-at
+                                            i.iconfont &#xe607;
+                                       span.user-medal 勋章
+                                    p.reply-content 这是一个评论，我并不看的懂为什么这是评论哈哈哈哈
+                                #page
+                                .layui-form.layui-form-pane.reply-editor.reply-editor
+                                            textarea#content( name='content',style='display: none;height: 260px;')
+                                        .layui-form-item
+                                            button.layui-btn 立即发布
+                    .edge
+                        h3 啊啊啊啊
+    script.
+        var topic=!{JSON.stringify(topic)};
+        var vue = new Vue({
+            el: '.conten-detail',
+            data: {
+                name:'111111aaa',
+                vtopic:topic,
+                vauthor:topic.author_id,
+                active:false
+            },
+            // 在 `methods` 对象中定义方法
+            methods: {
+                greet: function (event) {
+                    // `this` 在方法里指当前 Vue 实例
+                    alert('Heldlo ' + this.name + '!')
+                    this.active=true
+                    // `event` 是原生 DOM 事件
+                    alert(event.target.tagName)
+                },
+                getLocalDate(date){
+                    var date = new Date(date);
+                    var string = date.getFullYear()+'年'+(date.getMonth()+1)+'月'+date.getDate()+'日';
+                    return string;
+
+                },
+                getCurrentDate(date){
+                    var date = Date.parse(new Date(date));
+                    var minute = 1000 * 60;
+                    var hour = minute * 60;
+                    var day = hour * 24;
+                    var halfamonth = day * 15;
+                    var month = day * 30;
+                    var now = new Date().getTime();
+                    var diffValue = now - date;
+                    if (diffValue < 0) {
+                        return;
+                    }
+                    var monthC = diffValue / month;
+                    var weekC = diffValue / (7 * day);
+                    var dayC = diffValue / day;
+                    var hourC = diffValue / hour;
+                    var minC = diffValue / minute;
+                    if (monthC >= 1) {
+                        result = "" + parseInt(monthC) + "月前";
+                    }
+                    else if (weekC >= 1) {
+                        result = "" + parseInt(weekC) + "周前";
+                    }
+                    else if (dayC >= 1) {
+                        result = "" + parseInt(dayC) + "天前";
+                    }
+                    else if (hourC >= 1) {
+                        result = "" + parseInt(hourC) + "小时前";
+                    }
+                    else if (minC >= 1) {
+                        result = "" + parseInt(minC) + "分钟前";
+                    } else
+                        result = "刚刚";
+                    return result;
+                }
+            }
+        })
+        layui.use(['laypage', 'layer'], function () {
+            var laypage = layui.laypage
+                    , layer = layui.layer;
+            console.log(topic);
+            laypage({
+                cont: 'page'
+                , pages: 100 //总页数
+                , groups: 5 //连续显示分页数
+            });
+        });
+        var editor = new wangEditor('content');
+        editor.config.mapAk = 'ZwDq5sGhrTKGjLVPkoWrRiut0PjrqgqR';
+        editor.config.uploadImgUrl = '/uploads';
+        // 配置自定义参数（举例）
+        editor.config.uploadParams = {
+            token: 'abcdefg',
+            user: 'wangfupeng1988'
+        };
+        // 设置 headers（举例）
+        editor.config.uploadHeaders = {
+            'Accept': 'text/x-json'
+        };
+        // 隐藏掉插入网络图片功能。该配置，只有在你正确配置了图片上传功能之后才可用。
+        editor.config.hideLinkImg = false;
+        editor.config.printLog = false;
+        editor.config.uploadImgFileName = 'file'
+        editor.create();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

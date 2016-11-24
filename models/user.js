@@ -12,7 +12,11 @@ let userSchema = new Schema({
   score: {type: Number ,default: 0},
   depict: {type:String},
   avatar: {type: Number},
-  update_at: { type: Date, default: Date.now }
+  seal:[], //印章
+  update_at: { type: Date, default: Date.now },
+  medal:[
+      {type: String}
+  ]//勋章
 });
 
 userSchema.index({loginName: 1}, {unique: true});
@@ -25,6 +29,10 @@ userSchema.pre('save', function (next) {
 
     if (!this.created_at) {
         this.created_at = currentDate;
+    }
+    //新建用户获得铜牌会员
+    if(this.medal.length===0){
+        this.medal.push('u233');
     }
     next();
 });

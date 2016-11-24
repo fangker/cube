@@ -1,0 +1,67 @@
+extends header
+
+block main
+    .main.layui-clear
+        .warp
+            .topic-panel
+                .topic-tab
+                    span
+                        a(href='/jie/') 全部
+                        a(href='/jie/') aaa
+                        a(href='/jie/') 全部
+                        a(href='/jie/') aaa
+                    form.form-search
+                        i.iconfont &#xe6ae
+                        input.layui-input(autocomplete='off', placeholder='搜索内容，回车跳转', type='text', name='q')
+                    .topic-btn
+                        button.layui-btn 小型按钮
+                ui.topic-list-panel
+                    tbody(v-cloak)
+                            li(v-for="item in topicList")
+                                a.list-avatar(href='/u/336')
+                                    img(src='http://res.layui.com/images/fly/avatar/00.jpg', alt='纸飞机')
+                                h2.list-tip
+                                    a(href='/jie/4637.html') {{item.title}}
+                                p.topic-list-depict
+                                    span.topic-list-name
+                                       a( v-bind:href="'/a/'+item.author_id._id") {{item.author_id.name}}
+                                    span.topuc-list-date {{getCreateDate(item.last_reply_at)}}
+                                    span.topic-list-tab {{getTabName(item.tab)}}
+                #page
+            .edge
+                h3 最新嫖客
+    script.
+        var page=!{JSON.stringify(page)};
+        var data=!{JSON.stringify(data)};
+        var vue = new Vue({
+            el: '.topic-panel',
+            data: {
+                topicList:data
+            },
+            methods: {
+                getTabName(tabName){
+                 if(tabName=='share'){
+                     return '共享'
+                 }
+                },
+                getCreateDate(date){
+                    var date = new Date(date);
+                    var create= ('发布日期:'+date.toLocaleDateString());
+                    return create;
+                }
+
+
+            },
+            computed:{
+
+            }
+        })
+        layui.use(['laypage', 'layer'], function () {
+            var laypage = layui.laypage
+                    , layer = layui.layer;
+            laypage({
+                cont: 'page'
+                , pages: page //总页数
+                , groups: Math.ceil(page/20)//连续显示分页数
+            });
+        });

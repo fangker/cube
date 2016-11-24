@@ -1,7 +1,6 @@
 
 const mongoose = require('mongoose');
 let ObjectId = mongoose.Schema.Types.ObjectId;
-
 let Schema  = mongoose.Schema;
 
 let replySchema = new Schema({
@@ -9,9 +8,9 @@ let replySchema = new Schema({
     topic_id: { type: ObjectId ,ref: 'Topic'}, //话题Id
     author_id: { type: ObjectId ,ref: 'User'}, //作者Id
     reply_id: { type: ObjectId ,ref: 'User'},
-    seal:[], //印章
     create_at: { type: Date, default: Date.now },
     update_at: { type: Date, default: Date.now },
+    ups:[ObjectId],
     deleted: {type: Boolean, default: false} //删除需要保留概要
 })
 

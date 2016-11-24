@@ -8,11 +8,9 @@ const {userUpload} = require('./utils/uploads').upload;
 
 
 //注册页面
-router.get('/',sign.demo);
+router.get('/1',sign.demo);
 //方法调试
 router.get('x/1',sign.demo);
-//话题面板.
-router.get('topiclist/:page',topic.getTopicList);
 //注册页面
 router.get('signup',sign.showSignup);
 //提交注册
@@ -22,7 +20,11 @@ router.post('topic/add',topic.add);
 //提交话题页面
 router.get('topic/add',topic.getWritePage);
 //个人信息页面
-router.get('user/set',user.showUserSet)
+router.get('user/set',user.showUserSet);
+//文章内容页面获得
+router.get('topic/get/:topicid',topic.showTopic);
+//话题列表
+router.get('/',topic.showTopicList);
 //图片提交
 router.post('uploads',userUpload.single('file'),(ctx,next)=>{
     console.log(ctx.req.file);
