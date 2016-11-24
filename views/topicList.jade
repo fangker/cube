@@ -24,7 +24,7 @@ block main
                                     a(href='/jie/4637.html') {{item.title}}
                                 p.topic-list-depict
                                     span.topic-list-name
-                                       a( v-bind:href="'/a/'+item.author_id._id") {{item.author_id.name}}
+                                       a( v-bind:href="'/user/'+item.author_id._id") {{item.author_id.name}}
                                     span.topuc-list-date {{getCreateDate(item.last_reply_at)}}
                                     span.topic-list-tab {{getTabName(item.tab)}}
                 #page

@@ -11,11 +11,12 @@ let replySchema = new Schema({
     create_at: { type: Date, default: Date.now },
     update_at: { type: Date, default: Date.now },
     ups:[ObjectId],
+    ups_count:{type:Number,default:0},
     deleted: {type: Boolean, default: false} //删除需要保留概要
 })
 
 replySchema.index({topic_id: 1});
-replySchema.index({author_id: 1, create_at: -1});
+replySchema.index({author_id: 1,  create_at: -1});
 
 mongoose.model('Reply', replySchema,'reply');
 

@@ -19,10 +19,8 @@ exports.createTopic = (author,title,content,image,tab)=>{
 /** 根据文章ID获取文章内容
  * @{String} topicID 话题ID
  */
-exports.getTopicMessage = (topic) =>{
-    console.log(topic)
-    //没过滤字段
-   return Topic.findOne({_id:`${topic}`}).populate('author_id') .exec();
+exports.getTopicMessage = (topicId) =>{
+   return Topic.findByIdAndUpdate({_id:`${topicId}`},{'$inc':{'visit_count':1}}, {new: true}).populate('author_id').exec();
 }
 /** topicList 页面展示
  * @returns {Array}

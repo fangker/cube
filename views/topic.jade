@@ -4,53 +4,54 @@ block main
     .main.layui-clear
         .warp
                 .conten-detail
-                        h1 {{vtopic.title}}
-                        .topic-tip
-                        .topic-about
-                            div(v-cloak)
-                                a.topic-author-avatar(href='/u/336')
-                                    img(src='http://res.layui.com/images/fly/avatar/00.jpg', alt='纸飞机')
-                                span.topic-about-view  {{vauthor.name}}
-                                    cite.cite
-                                        span
-                                         a.user-name(href='/u/336')
-                                        span.user-vip {{vauthor.score}}
-                                        span.topic-create 发布于: {{getLocalDate(vtopic.create_at)}}
-                                        span.topic-update 最后一次更新: {{getCurrentDate(vtopic.update_at)}}
-                                    em  暗暗
-                        .topic-content
-                            p 共X人发表了评论哈哈哈
+                    div(v-cloak)
+                            h1 {{vtopic.title}}
+                            .topic-tip
+                            .topic-about
+                                    a.topic-author-avatar(href='/u/336')
+                                        img(src='http://res.layui.com/images/fly/avatar/00.jpg', alt='纸飞机')
+                                    span.topic-about-view  {{vauthor.name}}
+                                        cite.cite
+                                            span
+                                             a.user-name(href='/u/336')
+                                            span.user-vip {{vauthor.score}}
+                                            span.topic-create 发布于: {{getLocalDate(vtopic.create_at)}}
+                                            span.topic-update 最后一次更新: {{getCurrentDate(vtopic.update_at)}}
+                                        em  暗暗
+                            .topic-content
+                                p 共X人发表了评论哈哈哈
 
-                        .common-header
-                            p 共X人发表了评论
-                        .topic-common-list
-                                .topic-common
-                                    .author-content
-                                       a.topic-common-avatar(href='/u/336')
-                                         img(src='http://res.layui.com/images/fly/avatar/00.jpg', alt='纸飞机')
-                                    span.user-info
-                                       a.user-name(v-bind:href="'/user/'+vtopic.author_id") aaaa
-                                       span.reply-time 1楼·6天前
-                                       span(class="reply-ups" v-bind:class="{ reply_up_active: active}")
-                                            i(v-on:click="greet").iconfont &#xe62a;
-                                            em 1
-                                       span.reply-at
-                                            i.iconfont &#xe607;
-                                       span.user-medal 勋章
-                                    p.reply-content 这是一个评论，我并不看的懂为什么这是评论哈哈哈哈
-                                #page
-                                .layui-form.layui-form-pane.reply-editor.reply-editor
-                                            textarea#content( name='content',style='display: none;height: 260px;')
-                                        .layui-form-item
-                                            button.layui-btn 立即发布
-                    .edge
-                        h3 啊啊啊啊
+                            .common-header
+                                p 共X人发表了评论
+                            .topic-common-list
+                                    .topic-common(v-for="item in vreply")
+                                        .author-content
+                                           a.topic-common-avatar(v-bind:href="'/user/'+item.reply_id")
+                                             img(src='http://res.layui.com/images/fly/avatar/00.jpg', alt='纸飞机')
+                                        span.user-info
+                                           a.user-name(v-bind:href="'/user/'+item.reply_id") aa
+                                           span.reply-time 1楼·6天前
+                                           span(class="reply-ups" v-bind:class="{ reply_up_active: active}")
+                                                i(v-on:click="greet").iconfont &#xe62a;
+                                                em 1
+                                           span.reply-at
+                                                i.iconfont &#xe607;
+                                           span.user-medal 勋章
+                                        p.reply-content {{item.content}}
+                                    #page
+                                    .layui-form.layui-form-pane.reply-editor.reply-editor
+                                                textarea#content( name='content',style='display: none;height: 260px;')
+                                            .layui-form-item
+                                                button(v-on:click="postreply").layui-btn 立即发布
+                .edge
+                    h3 啊啊啊啊
     script.
         var topic=!{JSON.stringify(topic)};
+        var reply=!{JSON.stringify(reply)};
         var vue = new Vue({
             el: '.conten-detail',
             data: {
-                name:'111111aaa',
+                vreply:reply,
                 vtopic:topic,
                 vauthor:topic.author_id,
                 active:false
@@ -69,6 +70,23 @@ block main
                     var string = date.getFullYear()+'年'+(date.getMonth()+1)+'月'+date.getDate()+'日';
                     return string;
 
+                },
+                postreply(){
+                    $.ajax({
+                        type: 'POST',
+                        url: '/reply/post',
+                        data: {
+                           topicid:this.vtopic._id,
+                            content:editor.$txt.formatText(),
+                        },
+                        success: function(data){
+
+                        },
+                        error: function (data) {
+
+                        },
+                        dataType: 'json'
+                    });
                 },
                 getCurrentDate(date){
                     var date = Date.parse(new Date(date));

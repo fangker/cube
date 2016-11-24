@@ -25,7 +25,6 @@ exports.showSignup = async(ctx,next)=>{
 }
 
 exports.signup = async(ctx,next)=>{
-    console.log(ctx.request.body);
     let {loginname,email,password,username,check} = ctx.request.body;
     //check验证
     let state = await user.cereatUser(loginname,password,username,email);

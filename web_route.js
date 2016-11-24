@@ -2,6 +2,7 @@ const router = require('koa-router')();
 const sign = require('./controller/sign');
 const topic = require('./controller/topic');
 const user = require('./controller/user');
+const reply = require('./controller/reply');
 const {userUpload} = require('./utils/uploads').upload;
 
 
@@ -25,6 +26,8 @@ router.get('user/set',user.showUserSet);
 router.get('topic/get/:topicid',topic.showTopic);
 //话题列表
 router.get('/',topic.showTopicList);
+//提交回复
+router.post('reply/post',reply.addReply);
 //图片提交
 router.post('uploads',userUpload.single('file'),(ctx,next)=>{
     console.log(ctx.req.file);

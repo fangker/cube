@@ -1,10 +1,11 @@
 const topic = require('../proxy/topic');
 const user = require('../proxy/user');
+const reply = require('../proxy/reply');
 const mongoose = require('mongoose');
 
 exports.add = async(ctx,next)=>{
-    console.log(ctx.session.user);
-    let {title,content,tab} = ctx.request.body;
+     console.log(ctx.session.user);
+     let {title,content,tab} = ctx.request.body;
      auser = await user.getUserbyLoginName(ctx.session.user);
      atopic = await topic.createTopic(auser._id,title,content,'',tab);
      console.log(atopic);
@@ -29,9 +30,9 @@ exports.getTopicList = async(ctx,next) => {
 
 exports.showTopic = async(ctx,next) =>{
     let topicID = ctx.params.topicid;
-    sid = mongoose.Types.ObjectId(topicID);
-    let gtm=  await topic.getTopicMessage(sid);
-    //文章内容
-    console.log(gtm);
-    await  ctx.render('topic',{topic:gtm})
+    let  sid = mongoose.Types.ObjectId(topicID);
+    let gtm =  await topic.getTopicMessage(sid);
+    let  topic_reply = await reply.getTopicReply(sid);
+    await  ctx.render('topic',{topic:gtm,reply:topic_reply})
+    console.log(topic_reply);
 }
