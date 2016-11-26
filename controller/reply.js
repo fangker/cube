@@ -12,12 +12,13 @@ exports.addReply=async(ctx,next)=>{
             ctx.body = { "state": "error" };
         }
     }
-    ctx.body = { "state": "ok" ,"reply":state};
+    ctx.body = { "state": "ok"};
 }
 
 exports.setUps=async(ctx,next)=>{
     let {topicid,replyid}=(ctx.request.query);
-    let replyId = mongoose.Types.ObjectId(topicid.trim());
-   // reply.setUps()
+    let replyId = mongoose.Types.ObjectId(replyid.trim());
+    let postReplyId = mongoose.Types.ObjectId('582acc7acad5744628443666');
+    await  reply.setUps(replyId ,postReplyId);
     ctx.body = { "state": "ok"};
 }

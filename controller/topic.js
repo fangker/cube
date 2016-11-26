@@ -31,8 +31,13 @@ exports.getTopicList = async(ctx,next) => {
 exports.showTopic = async(ctx,next) =>{
     let topicID = ctx.params.topicid;
     let  sid = mongoose.Types.ObjectId(topicID);
+    let  userId = mongoose.Types.ObjectId('582acc7acad5744628443666');
     let gtm =  await topic.getTopicMessage(sid);
-    let  topic_reply = await reply.getTopicReply(sid);
-    await  ctx.render('topic',{topic:gtm,reply:topic_reply})
-    console.log(topic_reply);
+    let topic_reply =await reply.getTopicReply(sid,userId);
+    let page = await topic.getReplyPage(sid);
+    await  ctx.render('topic',{
+        topic:gtm,
+        reply:topic_reply,
+        page:page
+    })
 }

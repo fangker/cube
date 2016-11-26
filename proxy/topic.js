@@ -20,7 +20,7 @@ exports.createTopic = (author,title,content,image,tab)=>{
  * @{String} topicID 话题ID
  */
 exports.getTopicMessage = (topicId) =>{
-   return Topic.findByIdAndUpdate({_id:`${topicId}`},{'$inc':{'visit_count':1}}, {new: true}).populate('author_id').exec();
+   return Topic.findByIdAndUpdate({_id:`${topicId}`},{'$inc':{'visit_count':-1}}, {new: true}).populate('author_id').exec();
 }
 /** topicList 页面展示
  * @returns {Array}
@@ -35,6 +35,11 @@ exports.getTopicList = (p) => {
  * @returns {Number}
  */
 exports.getListPage = (tab) => {
-    let rtab = null || tab;
     return Topic.count({});
+}
+/** 获得reply分页信息
+ * @returns {Number}
+ */
+exports.getReplyPage = (sid) => {
+    return Topic.find({_id:sid},{reply_count:1});
 }
