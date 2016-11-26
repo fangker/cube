@@ -14,3 +14,10 @@ exports.addReply=async(ctx,next)=>{
     }
     ctx.body = { "state": "ok" ,"reply":state};
 }
+
+exports.setUps=async(ctx,next)=>{
+    let {topicid,replyid}=(ctx.request.query);
+    let replyId = mongoose.Types.ObjectId(topicid.trim());
+   // reply.setUps()
+    ctx.body = { "state": "ok"};
+}

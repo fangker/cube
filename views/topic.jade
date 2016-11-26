@@ -10,11 +10,11 @@ block main
                             .topic-about
                                     a.topic-author-avatar(href='/u/336')
                                         img(src='http://res.layui.com/images/fly/avatar/00.jpg', alt='纸飞机')
-                                    span.topic-about-view  {{vauthor.name}}
+                                    span.topic-about-view
+                                        .author-name {{vauthor.name}}
                                         cite.cite
                                             span
-                                             a.user-name(href='/u/336')
-                                            span.user-vip {{vauthor.score}}
+                                                i(v-bind:class="getLevel(vauthor.score).lv1").iconfont
                                             span.topic-create 发布于: {{getLocalDate(vtopic.create_at)}}
                                             span.topic-update 最后一次更新: {{getCurrentDate(vtopic.update_at)}}
                                         em  暗暗
@@ -28,14 +28,17 @@ block main
                                         .author-content
                                            a.topic-common-avatar(v-bind:href="'/user/'+item.reply_id")
                                              img(src='http://res.layui.com/images/fly/avatar/00.jpg', alt='纸飞机')
-                                        span.user-info
-                                           a.user-name(v-bind:href="'/user/'+item.reply_id") aa
-                                           span.reply-time 1楼·6天前
-                                           span(class="reply-ups" v-bind:class="{ reply_up_active: active}")
-                                                i(v-on:click="greet").iconfont &#xe62a;
+                                        span(v-bind:id='item._id').user-info
+                                           .user-name
+                                                a(v-bind:href="'/user/'+item.reply_id") {{item.reply_id.name}}
+                                           span.vip
+                                               i.iconfont.user-level-1.icon-lv1
+                                           span.reply-time 在{{getCurrentDate(item.create_at)}}发布
+                                           span(onselectstart="return false" class="reply-ups")
+                                                i.iconfont.icon-zan
                                                 em 1
                                            span.reply-at
-                                                i.iconfont &#xe607;
+                                                i.iconfont.icon-huifu2
                                            span.user-medal 勋章
                                         p.reply-content {{item.content}}
                                     #page
@@ -58,13 +61,6 @@ block main
             },
             // 在 `methods` 对象中定义方法
             methods: {
-                greet: function (event) {
-                    // `this` 在方法里指当前 Vue 实例
-                    alert('Heldlo ' + this.name + '!')
-                    this.active=true
-                    // `event` 是原生 DOM 事件
-                    alert(event.target.tagName)
-                },
                 getLocalDate(date){
                     var date = new Date(date);
                     var string = date.getFullYear()+'年'+(date.getMonth()+1)+'月'+date.getDate()+'日';
@@ -87,6 +83,14 @@ block main
                         },
                         dataType: 'json'
                     });
+                },
+                getLevel (score){
+                    var lv={
+                        lv1:'user-level-1 icon-lv1'
+                    }
+                    if(score>=0&&score<=100){
+                        return lv;
+                    }
                 },
                 getCurrentDate(date){
                     var date = Date.parse(new Date(date));
@@ -152,6 +156,37 @@ block main
         editor.config.printLog = false;
         editor.config.uploadImgFileName = 'file'
         editor.create();
+        function ups(){
+            var state = false
+            $(".reply-ups").click(function () {
+                var ups = $(this).attr("class").indexOf("topic-ups-active");
+                (ups > 0) ? ( state = true) : (state = false)
+                $(this).toggleClass("topic-ups-active");
+                if (state) {
+                    state = false
+                    var num = $(this).children("em").text();
+                    $(this).children("em").text(parseInt(num) - 1);
+                } else {
+                    state = true
+                    var num = $(this).children("em").text();
+                    $(this).children("em").text(parseInt(num) + 1);
+                }
+                var replyID = $(this).parent().attr("id");
+                $.ajax({
+                    type: 'GET',
+                    url: '/reply/ups'+'?replyid='+replyID+'&topicid='+topic._id,
+                    success: function (data) {
+
+                    },
+                    error: function (data) {
+
+                    },
+                    dataType: 'json'
+                });
+            });
+        }
+        ups();
+
 
 
 

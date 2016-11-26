@@ -13,7 +13,11 @@ exports.addReply=(topicId,content,replyId)=>{
     return   reply.save();
 }
 
-exports.getTopicReply=(topicId)=>{
+exports.getTopicReply = (topicId) =>{
     return Reply.find({topic_id:topicId}).populate('reply_id').sort({create_at:-1}).exec();
 
+}
+
+exports.setUps = (topicId) =>{
+    return Reply.update({})
 }

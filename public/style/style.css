@@ -141,14 +141,6 @@
 
 }
 
-@font-face {
-    font-family: 'iconfont';  /* project id："185094" */
-    src: url('//at.alicdn.com/t/font_5rtqe76c00h33di.eot');
-    src: url('//at.alicdn.com/t/font_5rtqe76c00h33di.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_5rtqe76c00h33di.woff') format('woff'),
-    url('//at.alicdn.com/t/font_5rtqe76c00h33di.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_5rtqe76c00h33di.svg#iconfont') format('svg');
-}
 
 @media screen and (min-width:1200px) {
     .iconfont {
@@ -397,6 +389,7 @@
         height: 80px;
     }
     .topic-author-avatar  {
+        z-index: 99;
         width: 82px;
         position: relative;
         display: inline-block;
@@ -415,13 +408,14 @@
     .topic-about-view cite{
         font-style:normal;
     }
-    .user-vip{
+    .user-level-1{
         color: #FF7200;
-        margin-left: 20px;
-        font-weight: 700;
-        font-style: italic;
+        margin-left: 0px;
     }
     .user-name{
+        text-overflow: ellipsis;
+        width: 78px;
+        display: inline-block;
         color: #375395;
     }
     .topic-create{
@@ -431,7 +425,7 @@
     .topic-about-view em{
         font-style: normal;
         display: block;
-        margin-left: 105px;
+        margin-left: 102px;
         margin-top: -19px;
     }
     .topic-content{
@@ -482,7 +476,7 @@
         font-size: 25px;
     }
     .reply-time{
-        color: #ccacac;
+        color: #0e7bcb;
         font-style: oblique;
         font-size: 15px;
         margin-left: 20px;
@@ -508,20 +502,21 @@
         font-style: normal;
     }
     .common-header{
-        background-color: #bababa;
+        margin-bottom: 25px;
+        min-height: 41px;
         width: 95%;
-        height: 40px;
-        border-radius: 7px;
+        border-bottom: 2px dotted rgb(227, 95, 19);
     }
     .common-header p{
+        padding-left: 0px;
         font: 19px/1.5 宋体;
-        padding-left: 20px;
+        color: red;
         padding-top: 7px;
         margin: 0 auto;
     }
     .reply-ups{
         cursor:Pointer;
-        margin-left: 45%;
+        margin-left: 30%;
         display: inline;
     }
     .reply-ups em{
@@ -530,9 +525,6 @@
     .reply-at{
         display: inline;
         margin-left: 10%;
-    }
-    .reply_up_active{
-        color: #d11c1c;
     }
     .reply-editor{
         margin-top: 9px;
@@ -567,8 +559,27 @@
     [v-cloak]{
         display: none;
     }
-    .topic-update{
+    .vip i{
 
     }
+    .vip-text{
+        display: inherit;
+    }
+    .topic-ups-active{
+        color:red;
+    }
+    .topic-update{
+        margin-left: 4%;
+    }
+    .author-name{
+        text-overflow: ellipsis;
+        max-width: 78px;
+        display: inline-block;
+    }
+    .iconfont{
+        font-size:27px!important;
+    }
+
+
 
 }
