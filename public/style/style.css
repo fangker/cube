@@ -483,7 +483,8 @@
         font-style: oblique;
         font-size: 15px;
         margin-left: 20px;
-        display: inline;
+        width: 124px;
+        display: inline-block;
     }
     .user-medal{
         align-content: center;
@@ -528,6 +529,7 @@
     .reply-at{
         display: inline;
         margin-left: 10%;
+        cursor: pointer;
     }
     .reply-editor{
         margin-top: 9px;
@@ -581,6 +583,15 @@
     }
     .iconfont{
         font-size:27px!important;
+    }
+    .new-editor{
+        margin-bottom: 25px;
+        min-height: 99px;
+        width: 100%;
+        border-bottom: 1px dotted #DFDFDF;
+    }
+    .new-editor-bottom{
+        margin: 7px auto;
     }
 
 

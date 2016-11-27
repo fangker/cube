@@ -60,7 +60,6 @@ block main
                 vtopic:topic,
                 vups:reply.ups,
                 vauthor:topic.author_id,
-                active:false
             },
             // 在 `methods` 对象中定义方法
             methods: {
@@ -163,46 +162,107 @@ block main
                 , groups: 5 //连续显示分页数
             });
         });
-        function ups(){
-            var state = false
-            $(".reply-ups").click(function () {
-                var ups = $(this).attr("class").indexOf("topic-ups-active");
-                (ups > 0) ? ( state = true) : (state = false)
-                console.log(ups)
-                $(this).toggleClass("topic-ups-active");
-                if (state) {
-                    state = false
-                    var num = $(this).children("em").text();
-                    $(this).children("em").text(parseInt(num) - 1);
-                } else {
-                    state = true
-                    var num = $(this).children("em").text();
-                    $(this).children("em").text(parseInt(num) + 1);
-                }
-                var replyID = $(this).parent().attr("id");
-                $.ajax({
-                    type: 'GET',
-                    url: '/reply/ups'+'?replyid='+replyID,
-                    success: function (data) {
 
-                    },
-                    error: function (data) {
 
-                    },
-                    dataType: 'json'
-                });
-            });
-        }
-        ups();
         $(function () {
+            function ups() {
+                var state = false
+                $(".reply-ups").click(function () {
+                    var ups = $(this).attr("class").indexOf("topic-ups-active");
+                    (ups > 0) ? ( state = true) : (state = false)
+                    console.log(ups)
+                    $(this).toggleClass("topic-ups-active");
+                    if (state) {
+                        state = false
+                        var num = $(this).children("em").text();
+                        $(this).children("em").text(parseInt(num) - 1);
+                    } else {
+                        state = true
+                        var num = $(this).children("em").text();
+                        $(this).children("em").text(parseInt(num) + 1);
+                    }
+                    var replyID = $(this).parent().attr("id");
+                    $.ajax({
+                        type: 'GET',
+                        url: '/reply/ups' + '?replyid=' + replyID,
+                        success: function (data) {
+
+                        },
+                        error: function (data) {
+
+                        },
+                        dataType: 'json'
+                    });
+                });
+            }
+
+            ups();
+            toReply();
+            function toReply(){
+                $('.reply-at').bind('click', function () {
+                    $(this).unbind('click')
+                    var replyid = $(this).parent().attr("id")
+                    $(this).parent().parent().after(
+                            "<div class='new-editor'><textarea id=newcontent" + replyid + " style='height:200px'></textarea><button  class='layui-btn new-editor-bottom'>提交回复</button></div>"
+                    )
+                    var m = $(this).parent().parent().next().children(".layui-btn.new-editor-bottom").click(function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: '/toreply/post',
+                            data: {
+                                topicid: topic._id,
+                                replyid: replyid,
+                                content: editorNew.$txt.formatText()
+                            },
+                            success: function (data) {
+
+                            },
+                            error: function (data) {
+
+                            },
+                            dataType: 'json'
+                        });
+                    })
+                    var z = "newcontent" + replyid.toString();
+                    console.log("当前editorid", z);
+                    if (editorNew != undefined) {
+                        editorNew.destroy();
+                    }
+                    var editorNew = new wangEditor(z);
+
+                    editorNew.config.menus = [
+                        'source',
+                        '|',     // '|' 是菜单组的分割线
+                        'bold',
+                        'underline',
+                        'italic',
+                        'strikethrough',
+                        'eraser',
+                        'forecolor',
+                        'bgcolor',
+                        'img',
+                        'video',
+                        'link',
+                        'unlink',
+                        'table'
+                    ];
+                    editorNew.config.uploadImgUrl = '/uploads';
+                    // 设置 headers（举例）
+                    editorNew.config.uploadHeaders = {
+                        'Accept': 'text/x-json'
+                    };
+                    // 隐藏掉插入网络图片功能。该配置，只有在你正确配置了图片上传功能之后才可用。
+                    editorNew.config.hideLinkImg = false;
+                    editorNew.config.printLog = false;
+                    editorNew.config.uploadImgFileName = 'file'
+                    editorNew.create();
+                })
+            }
+
+
             var editor = new wangEditor('content');
             editor.config.mapAk = 'ZwDq5sGhrTKGjLVPkoWrRiut0PjrqgqR';
             editor.config.uploadImgUrl = '/uploads';
-            // 配置自定义参数（举例）
-            editor.config.uploadParams = {
-                token: 'abcdefg',
-                user: 'wangfupeng1988'
-            };
             // 设置 headers（举例）
             editor.config.uploadHeaders = {
                 'Accept': 'text/x-json'

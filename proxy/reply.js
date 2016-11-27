@@ -1,16 +1,21 @@
 const Reply = require('../models').Reply;
 const Topic = require('../models').Topic;
+const Message = require('../models').Message;
+
 /* 添加一个回复信息
 *
 *
  */
 exports.addReply=(topicId,content,replyId)=>{
     Topic.update({_id:topicId},{$set:{last_reply_at:Date.now()},$inc:{reply_count:1}})
-    let reply = Reply();
+    let reply = new Reply();
     reply.topic_id = topicId;
     reply.content = content;
     reply.reply_id = replyId;
     return   reply.save();
+    //message
+    let message= new Message();
+    message.master_id =
 }
 
 exports.getTopicReply = async(topicId,userId) =>{
@@ -36,4 +41,18 @@ exports.setUps =async (replId,postReplyId) =>{
        await Reply.update({_id:replId},{$inc:{ups_count:-1},$pull:{ups:postReplyId}});
     }
 }
-
+exports.addToReply =async (topicId ,replyId,toReplyId ,content) =>{
+        let reply=new Reply();
+        reply.topic_id = topicId;
+        reply.reply_id = replyId;
+        reply.author_id = toReplyId;
+        reply.content = content;
+        reply.save();
+    //属于@这种情况
+        let message =new Message();
+        message.master_id = replyId;
+        message.reply_id = toReplyId;
+        message.topic_id = topicId;
+        message.type ='at';
+        message.save();
+}

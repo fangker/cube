@@ -28,6 +28,8 @@ router.get('topic/get/:topicid',topic.showTopic);
 router.get('/',topic.showTopicList);
 //提交回复
 router.post('reply/post',reply.addReply);
+//回复某人
+router.post('toreply/post',reply.addToReply)
 //点赞
 router.get('reply/ups',reply.setUps)
 //图片提交
