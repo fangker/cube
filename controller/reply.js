@@ -2,11 +2,12 @@ const reply = require('../proxy/reply');
 const ObjectId = require('mongoose').Types.ObjectId;
 
 exports.addReply=async(ctx,next)=>{
-    let{topicid,content}=(ctx.request.body);
+    let{topicid,authorid,content}=(ctx.request.body);
     try{
-        topic = ObjectId(ctx.request.body.topicid);
-        replyId = ObjectId('58283adeddb4994e10e7856c');
-        let state= await reply.addReply(topic,content,replyId);
+        let topicId = ObjectId(ctx.request.body.topicid);
+        let replyId = ObjectId(ctx.session.sid);
+        let authorId =ObjectId(authorid);
+        let state= await reply.addReply(topicId,authorId,replyId,content);
     }catch(error) {
         if(error){
             ctx.body = { "state": "error" };
@@ -17,19 +18,19 @@ exports.addReply=async(ctx,next)=>{
 
 exports.setUps=async(ctx,next)=>{
     let {topicid,replyid}=(ctx.request.query);
-    let replyId = ObjectId(replyid.trim());
-    let postReplyId = ObjectId('582acc7acad5744628443666');
-    await  reply.setUps(replyId ,postReplyId);
+    let replyId = ObjectId(replyid);
+    let postReplyId = ObjectId(ctx.session._id);
+    await reply.setUps(replyId ,postReplyId);
     ctx.body = { "state": "ok"};
 }
 
 exports.addToReply=async(ctx,next)=>{
-    let {topicid,replyid,content}=(ctx.request.query);
-   // let toReplyId = ctx.session.user_id;
-    let replyId = ObjectId(replyid);
-    let toReplyId = ObjectId('582acc7acad5744628443666');
+    let {topicid,replyid,content}=(ctx.request.body);
+    let replyId = ObjectId(ctx.session.sid);
+    //被回复人
+    let toReplyId = ObjectId(replyid);
+    //被回复主题
     let topicId = ObjectId(topicid);
-
-    await  reply.addToReply(topicId ,replyId,toReplyId ,content);
+     await  reply.addToReply(topicId ,replyId,toReplyId ,content);
     ctx.body = { "state": "ok"};
 }

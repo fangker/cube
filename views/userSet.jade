@@ -16,26 +16,27 @@ block main
                            .layui-tab-item.layui-show
                                .user-tab
                                  .layui-form-pane
-                                     .layui-form-item
-                                         label.layui-form-label 邮箱
-                                         .layui-input-inline
-                                             input.layui-input(type='text', name='email', autocomplete='off' , value=email)
-                                     .layui-form-item
-                                        label.layui-form-label 昵称
-                                        .layui-input-inline
-                                            input.layui-input(type='text', name='name', autocomplete='off', value=name)
-                                     .layui-form-item
-                                         label.layui-form-label 城市
-                                         .layui-input-inline
-                                             input.layui-input(type='text', name='city', autocomplete='off' , value=city)
-                                     .layui-form-item.layui-form-text
-                                        .layui-form-item
-                                        .user-depict
-                                           p 个人简介
-                                         .layui-input-block
-                                         textarea.layui-textarea(placeholder='随便写些什么刷下存在感', name='sign', autocomplete='off', style='height: 80px;')
-                                     .layui-form-item
-                                         button.layui-btn(type='submit') 立即提交
+                                     form(action='/user/set', method='POST')
+                                         .layui-form-item
+                                             label.layui-form-label 邮箱
+                                             .layui-input-inline
+                                                 input.layui-input(type='text', name='email', autocomplete='off' , value=data.email)
+                                         .layui-form-item
+                                            label.layui-form-label 昵称
+                                            .layui-input-inline
+                                                input.layui-input(type='text', name='name', autocomplete='off', value=data.name)
+                                         .layui-form-item
+                                             label.layui-form-label 城市
+                                             .layui-input-inline
+                                                 input.layui-input(type='text', name='city', autocomplete='off' , value=data.city)
+                                         .layui-form-item.layui-form-text
+                                            .layui-form-item
+                                            .user-depict
+                                               p 个人简介
+                                             .layui-input-block
+                                             textarea.layui-textarea(placeholder='随便写些什么刷下存在感', name='depict', autocomplete='off', style='height: 80px;') #{data.depict}
+                                         .layui-form-item
+                                             button.layui-btn(type='submit') 立即提交
 
 
                            .layui-tab-item 2

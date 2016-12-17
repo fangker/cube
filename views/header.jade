@@ -10,11 +10,31 @@ block content
                     img(src='http://res.layui.com/images/layui/logo-1.png', alt='layui')
                 ul.layui-nav.nav.layui-nav-item
                     li.layui-nav-item
-                        a(href='') 主页
-                    li.layui-nav-item.layui-this
+                        a(href='/') 主页
+                    li.layui-nav-item
                         a(href='') 产品
                     li.layui-nav-item
                         a(href='') 解决方案
                     li.layui-nav-item
-                        a(href='') 大数据
+                        a(href='') 222
+                ul.layui-nav.nav-state.layui-nav-item
+                    if (user.loginName)
+                        a
+                            img(src="/avatar/uavatar/#{user.avatar}", alt='layui')
+                            a(href="/user/center")
+                                cite #{user.name}
+                        .nav-setup
+                            a(href='/user/set')
+                                i.icon-set.iconfont.nav-iconfont 设置
+                        .nav-setup
+                            a(href='')
+                                i.icon-tuichu.iconfont.nav-iconfont 登出
+                    else
+                        .nav-setup
+                            a(href='login')
+                                i.icon-set.iconfont.nav-iconfont 登录
+                        .nav-setup
+                            a(href='signup')
+                                i.icon-tuichu.iconfont.nav-iconfont 注册
         block main
+        include footer

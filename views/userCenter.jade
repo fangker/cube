@@ -1,0 +1,37 @@
+extends header
+
+block main
+    .main.layui-clear
+        .warp
+            .page-main
+                .page-title
+                    h2 用户中心
+                .page-content(v-cloak)
+                    span.page-menu
+                        a(href='/jie/') 我的话题
+                        a(href='/jie/') aaa
+                    .page-message    未读消息
+                    .message-info(v-for="message in vmessage")
+                        a(href='/jie/').message-info-user {{message.reply_id.name}}
+                        span {{getMessageContent(message)}}
+                        span.message-info-topic
+                            a(v-bind:href="'/topic/get/'+message.topic_id._id+'#'+message.reply") 《{{message.topic_id.title}}》
+    script.
+        var message = !{JSON.stringify(message)};
+        $(function () {
+            var vue = new Vue({
+                el: '.warp',
+                data: {
+                   vmessage:message
+                },
+                methods: {
+                    getMessageContent(message){
+                        if(message.type==='reply'){
+                            return '回复了您的主题：'
+                        }
+                    }
+                },
+                computed: {}
+            })
+        })
+

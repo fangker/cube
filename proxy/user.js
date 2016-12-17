@@ -37,8 +37,9 @@ exports.getUserByEmail = (email)=> {
  * @param {String} email Email
  * @
  */
-exports.cereatUser = (loginName,pass,name,email) =>{
+exports.cereatUser = (loginName,pass,name,email,image) =>{
     let user = User();
+    user.avatar=image;
     user.loginName=loginName;
     user.pass=encode(pass);
     user.name=name;
@@ -50,4 +51,29 @@ exports.cereatUser = (loginName,pass,name,email) =>{
  */
 exports.getUserbyLoginName = (loginName) =>{
     return User.findOne({loginName:loginName}).exec();
+}
+/**通过SID查找用户
+ * @param {Object} SID  用户名SID
+ */
+exports.getUserbySID = (SID) =>{
+    return User.findOne({_id:SID});
+}
+/*
+*验证用户登录情况
+* @param {Object} 成功或失败
+ */
+exports.checkLogin=async(login,pass)=>{
+return  await User.findOne({$or: [{loginName:login},{email:login}],$and: [{pass:encode(pass)}]});
+
+}
+/*
+ *个人信息设置
+ * @param {String} email 邮件
+ * @param {String} name 姓名
+ * @param {String} city 城市
+ * @param {String} depict city
+ */
+exports.setUserInfo=(loginName,email,name,city,depict)=> {
+    console.log(loginName, email, name, city, depict)
+   return User.update({loginName:loginName},{$set:{email:email,name:name,city:city,depict:depict}})
 }

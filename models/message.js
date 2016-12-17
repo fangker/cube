@@ -12,8 +12,9 @@ let Schema  = mongoose.Schema;
 var messageSchema = new Schema({
     type: { type: String },
     master_id: { type: ObjectId ,ref:'User'},//自身
-    author_id: { type: ObjectId ,ref:'User'},
+    author_id: { type: ObjectId ,ref:'User'},//被回复人ID
     topic_id: { type: ObjectId ,ref:'Topic'},
+    reply: { type: ObjectId ,ref: 'User'},//回复主题Id
     reply_id: { type: ObjectId ,ref:'User'},
     has_read: { type: Boolean, default: false },
     create_at: { type: Date, default: Date.now }

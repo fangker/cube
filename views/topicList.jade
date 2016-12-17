@@ -11,57 +11,88 @@ block main
                         a(href='/jie/') 全部
                         a(href='/jie/') aaa
                     form.form-search
-                        i.iconfont &#xe6ae
+                        i.iconfont.search-iconfont &#xe6ae
                         input.layui-input(autocomplete='off', placeholder='搜索内容，回车跳转', type='text', name='q')
                     .topic-btn
-                        button.layui-btn 小型按钮
-                ui.topic-list-panel
-                    tbody(v-cloak)
-                            li(v-for="item in topicList")
-                                a.list-avatar(href='/u/336')
-                                    img(src='http://res.layui.com/images/fly/avatar/00.jpg', alt='纸飞机')
-                                h2.list-tip
-                                    a(href='/jie/4637.html') {{item.title}}
-                                p.topic-list-depict
+                        a(href='topic/add')
+                            button.layui-btn 发布话题
+                ui(v-cloak).topic-list-panel
+                        li(v-for="item in vtopic")
+                            a.list-avatar(href='/u/336')
+                                img(v-bind:src="'/avatar/uavatar/'+item.author_id.avatar", alt='纸飞机')
+                            h2.list-tip
+                                a(v-bind:href="'/topic/get/'+item._id") {{item.title}}
+                                p.topic-list-hint
+                                    span.icon-pinglun.iconfont.hint-comment
+                                        i {{item.reply_count}}
+                                    span.icon-yanjing.iconfont.hint-view
+                                        i {{item.visit_count}}
+                            p.topic-list-depict
                                     span.topic-list-name
                                        a( v-bind:href="'/user/'+item.author_id._id") {{item.author_id.name}}
                                     span.topuc-list-date {{getCreateDate(item.last_reply_at)}}
                                     span.topic-list-tab {{getTabName(item.tab)}}
+                                    span.topic-list-good(v-if="item.good==true") 精华
+                                    span.topic-list-top(v-if="item.top==true") 置顶
+
+
                 #page
             .edge
-                h3 最新嫖客
+               h3 热情群众
+               .edge-content-active
+                   .edge-active-user
+                       a.edge-active-avatar(v-for="activeUser in vedge.activeUser" href="activeUser._id")
+                            img(v-bind:src="'/avatar/uavatar/'+activeUser.avatar" v-bind:title="activeUser.name")
+
+               h3 暂无评论
+               .edge-content
+                   .edge-content-text
+                       ol(v-cloak)
+                          li(v-for="zeroReply in vedge.zeroReply")
+                               a(v-bind:href="'/topic/get/'+zeroReply._id") {{zeroReply.title}}
+
+               h3 热门话题
+               .edge-content
+                   .edge-content-text
+                        ol(v-cloak)
+                            li(v-for="firelist in vedge.fireTopic")
+                                a(v-bind:href="'/topic/get/'+firelist._id") {{firelist.title}}
+
+
     script.
-        var page=!{JSON.stringify(page)};
-        var data=!{JSON.stringify(data)};
-        var vue = new Vue({
-            el: '.topic-panel',
-            data: {
-                topicList:data
-            },
-            methods: {
-                getTabName(tabName){
-                 if(tabName=='share'){
-                     return '共享'
-                 }
-                },
-                getCreateDate(date){
-                    var date = new Date(date);
-                    var create= ('发布日期:'+date.toLocaleDateString());
-                    return create;
-                }
+       $(function(){
+           var topic = !{JSON.stringify(topic)};
+           var page = !{JSON.stringify(page)};
+           var edge = !{JSON.stringify(edge)};
+           var vue = new Vue({
+               el: '.warp',
+               data: {
+                   vtopic: topic,
+                   vedge: edge
+               },
+               methods: {
+                   getTabName(tabName){
+                       if (tabName == 'share') {
+                           return '共享'
+                       }
+                   },
+                   getCreateDate(date){
+                       var date = new Date(date);
+                       var create = ('发布日期:' + date.toLocaleDateString());
+                       return create;
+                   }
 
 
-            },
-            computed:{
-
-            }
-        })
-        layui.use(['laypage', 'layer'], function () {
-            var laypage = layui.laypage
-                    , layer = layui.layer;
-            laypage({
-                cont: 'page'
-                , pages: page //总页数
-                , groups: Math.ceil(page/20)//连续显示分页数
-            });
-        });
+               },
+               computed: {}
+           })
+           layui.use(['laypage', 'layer'], function () {
+               var laypage = layui.laypage
+                       , layer = layui.layer;
+               laypage({
+                   cont: 'page'
+                   , pages: page //总页数
+                   , groups: Math.ceil(page / 20)//连续显示分页数
+               });
+           });
+       })

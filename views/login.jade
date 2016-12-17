@@ -1,0 +1,36 @@
+extends header
+
+block main
+    .layui-main
+        .page-main
+            .side-bar
+                h2.page-title-circle 注册页面
+                .site-block.site-text
+                    .layui-form
+                        form(action='/login', method='POST')
+                            .layui-form-item
+                                label.layui-form-label 用户账号
+                                .layui-input-inline
+                                    input.layui-input(type='text', name='loginname', required='', lay-verify='required', placeholder='请输入邮箱或登录名',autocomplete='on')
+                                .layui-form-mid.layui-word-aux *邮箱或登录名
+                                .layui-form-item
+                                label.layui-form-label 密码框
+                                .layui-input-inline
+                                    input.layui-input(type='password', name='password', required='', lay-verify='required', placeholder='请输入密码', autocomplete='off')
+                                .layui-form-mid.layui-word-aux *6位以上字母数字组合以上
+                            .layui-form-item
+                                label.layui-form-label 人类验证
+                                .layui-input-block.form-input
+                                    input.layui-input.form-input(type='text', name='check', required='', lay-verify='required', placeholder='请输入左侧答案')
+                                    .form-text 1 + 1 = ?
+                            span.layui-input-block
+                                button.layui-btn(type='submit') 立即提交
+                                button.layui-btn(type='reset') 重置
+            .side-tips
+                h2.page-title-line 用户须知
+                .side-tips-text
+                    p
+                        | 德玛西亚德玛西亚德玛西亚德玛西亚
+                        | 德玛西亚德玛西亚德玛西亚德玛西亚
+                        | 德玛西亚德玛西亚德玛西亚德玛西亚德玛西亚
+                        | 德玛西亚德玛西亚德玛西亚德玛西亚德玛西亚

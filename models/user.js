@@ -11,7 +11,7 @@ let userSchema = new Schema({
   url: { type: String },
   score: {type: Number ,default: 0},
   depict: {type:String},
-  avatar: {type: Number},
+  avatar: {type: String},
   seal:[], //印章
   update_at: { type: Date, default: Date.now },
   medal:[

@@ -8,11 +8,8 @@ const onerror = require('koa-onerror');
 const bodyparser = require('koa-bodyparser')();
 const logger = require('koa-logger');
 const session = require('koa-session2');
-const Store = require('./common/store');
+const Store = require('./common/db_store');
 const config = require('./config');
-
-
-
 const index = require('./web_route');
 
 
@@ -45,6 +42,25 @@ app.use(async (ctx, next) => {
   await next();
   const ms = new Date() - start;
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+});
+app.use(async (ctx, next) => {
+  if(ctx.session.loginName){
+    ctx.state = {
+      user:{
+      loginName:ctx.session.loginName,
+      sid:ctx.session.sid,
+      name:ctx.session.name,
+      avatar:ctx.session.avatar
+  }
+    };
+  }else{
+    ctx.state = {
+      user:{
+
+      }
+    };
+  }
+ await next();
 });
 
 

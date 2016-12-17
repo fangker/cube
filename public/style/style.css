@@ -1,3 +1,6 @@
+ol {
+
+}
 .body{
     font: 14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;
 }
@@ -28,9 +31,44 @@
     top: 0px;
     border: 90px;
     position: absolute;
-    right: 0px;
-    background-color:#ffffff;
+    background-color: #ffffff;
+    float: right;
  }
+.nav-setup{
+    margin-left: 0px;
+    position: relative;
+    display: inline-block;
+    top: -6px;
+}
+.nav-state{
+    height: 51px;
+    line-height: 43px;
+    top: 14px;
+    border: 90px;
+    position: absolute;
+    right: 0px;
+    background-color: #ffffff;
+    display: inline-block;
+}
+.nav-state img{
+    height: 50px;
+}
+.nav-state a{
+    display: inline-block;
+    height: 45px;
+}
+.nav-icon{
+
+}
+
+.nav-state a cite{
+    margin-left: 14px;
+    display: inline-block;
+    font-size: 21px;
+    top: -6px;
+    position: relative;
+    cursor: pointer;
+}
 
 .layui-nav-item a {
     font-size: 22px;
@@ -142,11 +180,12 @@
 }
 
 
-@media screen and (min-width:1200px) {
+@media screen and (min-width:800px) {
+
     .iconfont {
         top: 6px;
         left: 133px;
-        font-family: "iconfont" !important;
+        font-family: "iconfont" ;
         font-size: 23px;
         font-style: normal;
         -webkit-font-smoothing: antialiased;
@@ -154,7 +193,10 @@
         -moz-osx-font-smoothing: grayscale;
         padding-left: 20px
     }
-
+    .page-main{
+        height: 748px;
+        padding: 0 12px;
+    }
     .topic-btn {
         position: absolute;
         right: 0px;
@@ -165,7 +207,7 @@
         position: relative;
         width: 1156px;
         margin: 0 auto 15px;
-        min-height: 600px;
+        min-height: 809px;
         top: 14px;
         padding-left: 0px;
     }
@@ -182,7 +224,12 @@
         width: 100%;
         min-height: 300px;
     }
-
+    .topic-reply-at{
+        display: block;
+        margin-top: 9px;
+        font: 22px/0.5 tahoma, arial, 宋体;
+        color: #03A9F4;
+    }
     .topic-tab {
         position: relative;
         margin-bottom: 20px;
@@ -217,7 +264,7 @@
     }
 
     .topic-list-panel {
-        min-height: inherit;
+        min-height: 1250px;
         display: block;
         position: relative;
         top: 15px;
@@ -238,8 +285,8 @@
         top: 0;
     }
 
-    .list-tip h2 a {
-        width: 86%;
+    .list-tip  a {
+        width: 50%;
         display: inline-block;
         max-width: 86%;
         margin-right: 100px;
@@ -254,17 +301,10 @@
         text-overflow: ellipsis;
         overflow: hidden;
         margin-left: 20px;
-        width: 80%;
+        width: 95%;
         position: relative;
     }
-    .list-tip a {
-        max-width: 86%;
-        margin-right: 100px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        font-size: 20px;
-    }
+
 
     .list-avatar img {
         width: 48px;
@@ -286,9 +326,9 @@
     }
 
     .topic-list-depict span {
+        display: inline-block;
         position: relative;
-        margin-top: 14px;
-        margin-left: 20px;
+        margin-top: -5px;
     }
 
     .edge {
@@ -305,14 +345,43 @@
         line-height: 38px;
         padding: 0 15px;
         border: none;
-        background-color: #ededeb;
+        background-color: #77d04b;
+        border-radius: 11px 11px 0px 0px;
     }
 
     .page-title {
-        margin: 3px 0 35px;
-        line-height: 48px;
+        margin: 4px 0 23px;
+        line-height: 41px;
         border-bottom: 2px solid #E9E9E9;
 
+    }
+    .page-message{
+        padding-left: 21px;
+        margin: 15px 0px;
+        height: 31px;
+        width: 100%;
+        background-color: #f1f1f1;
+        color: black;
+        line-height: 29px;
+    }
+    .message-info{
+        padding-left: 21px;
+        height: 31px;
+        border-bottom: 1px dotted #DFDFDF;
+    }
+    .message-info-user{
+        margin: 0px 6px;
+        font-size: 17px;
+        color: #03A9F4;
+    }
+    .message-info-topic{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 197px;
+        margin-right: 27px;
+        color: #2196F3;
+        font-size: 17px;
+        display: inline-block;
     }
 
     .page-title h2 {
@@ -375,6 +444,12 @@
         background-color: #77d04b;
         margin-bottom: 20px;
     }
+    .topic-tip a{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 95%;
+
+    }
     .topic-about{
         width: 95%;
         height: 81px;
@@ -387,6 +462,15 @@
         display: inline-block;
         border: none;
         height: 80px;
+    }
+    .edge-active-avatar  img {
+        box-shadow: 0px -1px 16px 0px #5d5c56;
+        margin: 3px 3px;
+        width: 65px;
+        position: relative;
+        display: inline-block;
+        border: none;
+        height: 65px;
     }
     .topic-author-avatar  {
         z-index: 99;
@@ -430,7 +514,7 @@
     }
     .topic-content{
         max-height: 595px;
-        width: 100%;
+        width: 95%;
         margin: 6px 3px;
         font: 19px/1.5 tahoma, arial, 宋体 !important;
         font-style: normal;
@@ -441,7 +525,6 @@
     }
     .topic-common-list{
         margin-top: 20px;
-        max-height: 595px;
         width: 95%;
     }
     .topic-common{
@@ -476,7 +559,7 @@
     .user-info a{
         font-family: "Sitka Heading";
         display: inline;
-        font-size: 25px;
+        font-size: 22px;
     }
     .reply-time{
         color: #0e7bcb;
@@ -502,8 +585,7 @@
         font: 19px/1.5  宋体 !important;
     }
     .cite{
-        display: inline-block;
-        font-style: normal;
+
     }
     .common-header{
         margin-bottom: 25px;
@@ -535,6 +617,12 @@
         margin-top: 9px;
         margin-bottom: 13px;
     }
+
+    .editor-seat{
+        height: 395px;
+        margin-top: 9px;
+        margin-bottom: 13px;
+    }
     .page{
         display: inline-block;
         vertical-align: middle;
@@ -548,9 +636,29 @@
     }
     .topic-list-name{
         margin-left: 0px!important;
+        width: 250px;
+    }
+    .topic-list-good{
+        color: white;
+        margin-left: 2%;
+        background: #FFC107;
+        font-size: 16px;
+        border: 1px solid #FFC107;
+        top: 0;
+        cursor: pointer;
+    }
+    .topic-list-top{
+        color: white;
+        margin-left: 2%;
+        background: rgb(139, 215, 70);
+        font-size: 16px;
+        border: 1px solid #14bc11;
+        top: 0;
+        cursor: pointer;
     }
 
     .topic-list-tab{
+        margin-left: 2%;
         background: #ffffff;
         font-size: 16px;
         border: 0px solid #100d0d;
@@ -559,7 +667,8 @@
         cursor: pointer;
     }
     .topuc-list-date{
-        color:#2D93CA;
+        width: 137px;
+        color: #2D93CA;
     }
     [v-cloak]{
         display: none;
@@ -578,11 +687,43 @@
     }
     .author-name{
         text-overflow: ellipsis;
-        max-width: 78px;
+        max-width: 108px;
         display: inline-block;
     }
-    .iconfont{
+    .topic-list-hint{
+        color: #7a80a3;
+        float: right;
+        position: relative;
+    }
+    .topic-list-hint i{
+        font-size: 17px;
+        margin-right: 6%;
+        position: relative;
+        top: -3px;
+        color: black;
+    }
+    .hint-comment{
+        width: 51px;
+        font-size: 25px!important;
+        display: inline-block;
+    }
+    .hint-view{
+        width: 63px;
+        font-size: 25px!important;
+        display: inline-block;
+    }
+    .common-icon{
+        font-size: 28px!important;
+    }
+    .search-iconfont{
+        top: 1px;
         font-size:27px!important;
+    }
+    .nav-iconfont{
+        font-size:25px!important;
+    }
+    .icon-set{
+        margin-left:-10px;
     }
     .new-editor{
         margin-bottom: 25px;
@@ -593,7 +734,86 @@
     .new-editor-bottom{
         margin: 7px auto;
     }
-
+    .page-content{
+        width: 60%;
+        min-height: 812px;
+    }
+    .page-menu{
+        display: inline-block;
+        vertical-align: top;
+        border: 1px solid #009E94;
+        border-right: none;
+        font-size: 0;
+    }
+    .page-menu a{
+        height: 40px;
+        line-height: 42px;
+        padding: 0 20px;
+        border-right: 1px solid #009E94;
+        font-size: 14px;
+        text-decoration: none;
+        Display: inline-block;
+    }
+    .edge-content{
+        width: auto;
+        height: 339px;
+        background: #f6f6f6;
+        margin-bottom: 25px;
+    }
+    .edge-content-text {
+        padding: 11px 17px;
+        font-family: "Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti,sans-serif!important;
+        font-size: 20px;
+    }
+    .edge-content-text  a{
+        width: 100%;
+        display: inline-block;
+        font-size: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .edge-content-text {
+        padding: 11px 17px;
+        font-family: "Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti,sans-serif!important;
+        font-size: 20px;
+    }
+    .edge-active-user{
+        margin: 0px 8px;
+        display: inline-block;
+        height: 62px;
+    }
+    .edge-content-active{
+        height: 303px;
+        padding: 5px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        background: #f6f6f6;
+        margin-bottom: 25px;
+    }
+    .edge-content-text li {
+        text-overflow: ellipsis;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    .footer {
+        margin: 50px 0px -4px;
+        display: inline-block;
+        height: 81px;
+        width: 100%;
+        background: rgb(108, 115, 120);
+        position: relative;
+    }
+    .footer  p{
+        line-height: 30px;
+        text-align: center;
+    }
+    .footer  a{
+        padding: 0 6px;
+       color: white;
+    }
 
 
 }

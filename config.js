@@ -15,7 +15,8 @@ const config = {
         tabs:[
             ['share','分享'],
             ['product','产品']
-        ]
+        ],
+        avatar:''
 
     },
     check:[['a和c之间的字母','b'],['铁三角是什么','耳机']]

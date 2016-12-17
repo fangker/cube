@@ -6,8 +6,9 @@ let Schema  = mongoose.Schema;
 let replySchema = new Schema({
     content: { type: String },
     topic_id: { type: ObjectId ,ref: 'Topic'}, //话题Id
-    author_id: { type: ObjectId ,ref: 'User'}, //作者Id
-    reply_id: { type: ObjectId ,ref: 'User'},
+    toreply_id:{ type: ObjectId ,ref: 'Reply'},//被回复topicId
+    author_id: { type: ObjectId ,ref: 'User'}, //被回复Id作者
+    reply_id: { type: ObjectId ,ref: 'User'},//回复主题Id
     create_at: { type: Date, default: Date.now },
     update_at: { type: Date, default: Date.now },
     ups:[ObjectId],
